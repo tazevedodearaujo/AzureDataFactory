@@ -1,0 +1,9 @@
+{
+	"name": "AzDtFacThiagoEstudos",
+	"location": "brazilsouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "6782ccb4-0525-4bb2-a477-bc9f71909de3",
+		"tenantId": "56ac50e4-cad8-4b2b-ac0a-eea35f93c52f"
+	}
+}
