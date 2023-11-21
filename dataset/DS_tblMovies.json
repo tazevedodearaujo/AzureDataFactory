@@ -1,0 +1,32 @@
+{
+	"name": "DS_tblMovies",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServerSDMovies",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ThiagoEstudosDtFact"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "Movies",
+				"type": "varchar"
+			},
+			{
+				"name": "Title",
+				"type": "varchar"
+			},
+			{
+				"name": "genres",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "BDMovies"
+		}
+	}
+}

@@ -1,0 +1,24 @@
+{
+	"name": "DSMovies",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "HttpServerMovie",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "ThiagoEstudosDtFact"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": false,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
