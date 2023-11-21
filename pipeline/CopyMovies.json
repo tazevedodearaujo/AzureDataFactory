@@ -1,0 +1,10 @@
+{
+	"name": "CopyMovies",
+	"properties": {
+		"description": "Copia os arquivos de um CSV com filmes para um banco SQL.",
+		"folder": {
+			"name": "ThiagoEstudosDtFac"
+		},
+		"annotations": []
+	}
+}
