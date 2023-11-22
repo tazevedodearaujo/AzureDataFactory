@@ -9,7 +9,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "DSMovies",
+						"referenceName": "DSMovies2",
 						"type": "DatasetReference"
 					},
 					"name": "MoviesDL",
@@ -19,15 +19,42 @@
 			"sinks": [],
 			"transformations": [
 				{
-					"name": "SelectCorrNome"
+					"name": "SelectCorrNome",
+					"description": "Renomeia colunas"
+				},
+				{
+					"name": "MoviesAcima1950",
+					"description": "Filtro para filmes acima de 1950"
+				},
+				{
+					"name": "DerivadaGenre",
+					"description": "Tratando os gêneros dos filmes"
 				}
 			],
 			"scriptLines": [
-				"source(allowSchemaDrift: true,",
+				"source(output(",
+				"          movie as string,",
+				"          title as string,",
+				"          genres as string,",
+				"          year as string,",
+				"          Rating as string,",
+				"          {Rotton Tomato} as string",
+				"     ),",
+				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false) ~> MoviesDL",
-				"MoviesDL select(skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> SelectCorrNome"
+				"MoviesDL select(mapColumn(",
+				"          movie,",
+				"          title,",
+				"          genres,",
+				"          year,",
+				"          Rating,",
+				"          {Rotten Tomato} = {Rotton Tomato}",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SelectCorrNome",
+				"SelectCorrNome filter(toInteger(year) > 1950) ~> MoviesAcima1950",
+				"MoviesAcima1950 derive(PrimaryGenre = iif(locate('|', genres) > 1, left(genres, locate('|', genres) -1), genres)) ~> DerivadaGenre"
 			]
 		}
 	}
