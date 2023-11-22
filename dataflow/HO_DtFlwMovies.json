@@ -1,0 +1,34 @@
+{
+	"name": "HO_DtFlwMovies",
+	"properties": {
+		"folder": {
+			"name": "DT_Movies"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DSMovies",
+						"type": "DatasetReference"
+					},
+					"name": "MoviesDL",
+					"description": "Importa dados dos movies"
+				}
+			],
+			"sinks": [],
+			"transformations": [
+				{
+					"name": "SelectCorrNome"
+				}
+			],
+			"scriptLines": [
+				"source(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false) ~> MoviesDL",
+				"MoviesDL select(skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> SelectCorrNome"
+			]
+		}
+	}
+}
